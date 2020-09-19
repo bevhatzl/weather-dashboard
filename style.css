@@ -1,5 +1,5 @@
 .card {
-    width: 100%;
+    width: 95%;
 }
 
 
@@ -19,4 +19,34 @@ h4 {
 
 .city-list {
     list-style-type: none;
+}
+
+.jumbotron {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:#003300;
+}
+
+.display-4 {
+    text-align: center;
+    color: white;
+   
+}
+
+.forecast-row {
+    width: 95%;
+}
+
+#weather-pic {
+    margin-left: 1em;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 700;
 }

@@ -22,7 +22,7 @@ $(document).ready(function() {
     // Loop through the list of stored cities and create li elements for each
     function buildCityList() {
         for (i = 0; i < savedCities.length; i++) {
-            newLiEl = document.createElement("li");
+            let newLiEl = document.createElement("li");
             newLiEl.textContent = savedCities[i];
             $(newLiEl).attr("class", "city-list");
             $(".list-group").prepend(newLiEl);
@@ -68,7 +68,8 @@ $(document).ready(function() {
     // Displaying the current weather 
     function updatePage(weatherData) {
         // Convert from Kelvin to Celsius
-        let temp = (parseInt(weatherData.main.temp) - 273.15).toFixed(1);
+        // let temp = (parseInt(weatherData.main.temp) - 273.15).toFixed(0);
+        let temp = (parseInt(Math.round(weatherData.main.temp - 273.15)));
         // Call to function to decide which weather image to display
         getImageIconData(weatherData.weather[0].main, "#weather-pic");
         // Updating the weather stats in the HTML
@@ -86,7 +87,7 @@ $(document).ready(function() {
             forecastArray.push({
                 dayNumber: i,
                 weather: forecastData.list[i].weather[0].main,
-                temp: "Temp: " + (parseInt(forecastData.list[i].main.temp) -273.15).toFixed(1) + "°C",
+                temp: "Temp: " + (parseInt(Math.round(forecastData.list[i].main.temp -273.15))) + "°C",
                 humid: "Humidity: " + forecastData.list[i].main.humidity + "%"
             })
         } 
@@ -112,7 +113,7 @@ $(document).ready(function() {
 
     // Create and add a list item for the current city
     function createCityEl(city) {
-        newLiEl = document.createElement("li");
+        let newLiEl = document.createElement("li");
         newLiEl.textContent = city;
         $(newLiEl).attr("class", "city-list");
         $(".list-group").prepend(newLiEl);
@@ -159,6 +160,17 @@ $(document).ready(function() {
         getAJAXData(currentCity);
         // Save the city in local storage for the saved cities list
         localStorage.setItem(savedCityLocalStorage, JSON.stringify((savedCities)));
+        // Save the current city in local storage, this will be displayed upon page refresh
+        localStorage.setItem(currCityLocalStorage, JSON.stringify((currentCity)));
+    })
+
+    // When a city in the list is clicked...
+    $(".list-group").on("click", function(event) {
+        event.preventDefault();
+        // Update the current city variable
+        currentCity = $(event.target)[0].textContent;
+        // Start the request to the api
+        getAJAXData(currentCity);
         // Save the current city in local storage, this will be displayed upon page refresh
         localStorage.setItem(currCityLocalStorage, JSON.stringify((currentCity)));
     })
