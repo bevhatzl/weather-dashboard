@@ -39,7 +39,8 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="city-name" ></h5>
+                            <h4 class="card-title" id="city-name" ></h4>
+                            <img src="" id="weather-pic">
                             <p class="card-text" id="current-temp" ></p>
                             <p class="card-text" id="current-humid" ></p>
                             <p class="card-text" id="current-wind"></p>
@@ -53,43 +54,43 @@
                 </div>
                 <div class="row forecast-row">                  
                     <div class="card forecast-card">
-                        <div class="card-body" >
-                            <h5 class="card-title"></h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Humidity:</p>
+                        <div class="card-body" data-value="0">
+                            <h5 class="card-title date" data-day="1"></h5>
+                            <img src="" class="icon-pic0">
+                            <p class="card-text temp" data-day="1"></p>
+                            <p class="card-text humid" data-day="1"></p>
                         </div>
                     </div>                                       
                     <div class="card forecast-card">
                         <div class="card-body" >
-                            <h5 class="card-title"></h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 class="card-title date" data-day="1"></h5>
+                            <img src="" class="icon-pic1">
+                            <p class="card-text temp" data-day="1"></p>
+                            <p class="card-text humid" data-day="1"></p>
                         </div>
                     </div>                    
                     <div class="card forecast-card">
                         <div class="card-body" >
-                            <h5 class="card-title"></h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 class="card-title date"></h5>
+                            <img src="" class="icon-pic2">
+                            <p class="card-text temp"></p>
+                            <p class="card-text humid"></p>
                         </div>
                     </div>
                     <div class="card forecast-card">
                         <div class="card-body" >
-                            <h5 class="card-title"></h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 class="card-title date"></h5>
+                            <img src="" class="icon-pic3">
+                            <p class="card-text temp"></p>
+                            <p class="card-text humid"></p>
                         </div>
                     </div>
                     <div class="card forecast-card">
                         <div class="card-body" >
-                            <h5 class="card-title"></h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 class="card-title date"></h5>
+                            <img src="" class="icon-pic4">
+                            <p class="card-text temp"></p>
+                            <p class="card-text humid"></p>
                         </div>
                     </div>
                 
@@ -101,7 +102,7 @@
       
 
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="script.js"></script>
   </body>
