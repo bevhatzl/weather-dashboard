@@ -50,3 +50,21 @@ label {
     font-size: 20px;
     font-weight: 700;
 }
+
+.city-list {
+    width: 80%;
+    padding-left: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #e6e6e6;
+    text-transform: capitalize;
+    
+}
+
+.city-list:hover {
+    cursor: pointer;
+}
+
+ul {
+    margin-bottom: 20px;
+}
