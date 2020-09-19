@@ -16,3 +16,7 @@ h4 {
 #current-temp {
     clear: left;
 }
+
+.city-list {
+    list-style-type: none;
+}
