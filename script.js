@@ -37,13 +37,13 @@ $(document).ready(function() {
 
     // To get the query URL for the city's current UV Index
     function buildUVQueryURL(longitude, latitude) {
-        let queryURL = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/uvi?appid=";
+        let queryURL = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/uvi?appid=";
         return queryURL + apiKey + "&lat=" + latitude + "&lon=" + longitude;
     }
 
     // To get the query URL for the 5 day forecast
     function buildForecastURL(cityName) {
-        let queryURL = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=";
+        let queryURL = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/forecast?q=";
         return queryURL + cityName + "&appid=" + apiKey;
     }
 
