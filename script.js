@@ -137,13 +137,16 @@ $(document).ready(function() {
             longitude = response.coord.lon;
             latitude = response.coord.lat;
             currentUVQuery = buildUVQueryURL(longitude, latitude);
+            getUVData(currentUVQuery);
         });
-
+        console.log(currentUVQuery);
+        
         // to get the UV Index
         $.ajax({
             url: currentUVQuery,
             method: "GET"
         }).then(response => {
+            console.log(response);
             $("#currentUV").text("UV Index: " + response.value);        
         });
                 
