@@ -11,14 +11,14 @@
   <body>
     <div class="container-fluid">
         <div class=row>
-            <div class="col-12">
+            <div class="col-12 jumbo-div">
                 <div class="jumbotron">
                     <h1 class="display-4">Weather Dashboard</h1>         
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row city-row">
             <div class="col-md-3">
                 <label for="city-input">Search for a City:</label>
                 <div class="input-group mb-3">
@@ -35,7 +35,7 @@
         
             <div class="col-md-9">
                 <div class="row">
-                    <div class="card">
+                    <div class="card curr-weather">
                         <div class="card-body">
                             <h4 class="card-title" id="city-name" ></h4>
                             <img src="" id="weather-pic" alt="">
@@ -47,9 +47,11 @@
                     </div>
                 </div>
                  
-                <div class="row">
+                <div class="row five-day">
                     <h2>5-Day Forecast:</h2>
                 </div>
+
+              <div class="wrapper-forecast">   
                 <div class="row forecast-row">                  
                     <div class="card forecast-card">
                         <div class="card-body">
@@ -92,6 +94,7 @@
                         </div>
                     </div>                
                 </div>
+              </div>
             </div>
         </div>
     </div>

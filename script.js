@@ -156,26 +156,34 @@ $(document).ready(function() {
             $.ajax({
                 url: currentUVQuery,
                 method: "GET"
-            }).then(response => {
+             }).then(response => {
                 $("#currentUV").text("UV Index: " + response.value);       
                 let UVNum = Number(response.value);
                 getUVColor(UVNum);              
             });
-        });    
-        // To get the 5 day forecast data            
-        $.ajax({
-            url: forecastQuery,
-            method: "GET"
-        }).then(buildForecast);            
+            // To get the 5 day forecast data   
+            $.ajax({
+                url: forecastQuery,
+                method: "GET"
+            }).then(buildForecast);                
+        });
+    }
+
+    function isCityInList(cityName) {
+        return savedCities.includes(cityName);
     }
 
     // When search button is clicked...
     $("#run-search").on("click", function(event) {
         event.preventDefault();
         currentCity = $("#city-input").val();
-        // Add the city to the list of saved cities
-        savedCities.push(currentCity);
-        createCityEl(currentCity);
+        // Call to function to check if city is already in list of saved cities
+        let IsCityInList = isCityInList(currentCity);
+        // Add the city to the list of saved cities if not already
+        if (!IsCityInList) {
+            savedCities.push(currentCity);        
+            createCityEl(currentCity);
+        }
         // Start the request to the api
         getAJAXData(currentCity);
         // Save the city in local storage for the saved cities list

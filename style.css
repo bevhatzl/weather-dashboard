@@ -25,6 +25,7 @@ h4 {
     padding-top: 20px;
     padding-bottom: 20px;
     background-color:#1f1f2e;
+    border-radius: 0;
 }
 
 .display-4 {
@@ -33,7 +34,9 @@ h4 {
 }
 
 .forecast-row {
-    width: 95%;   
+    width: 100%;  
+  margin: 0 auto;
+ 
 }
 
 #weather-pic {
@@ -87,4 +90,26 @@ ul {
 #currentUV {
     max-width: 130px;
     color: white;
+}
+
+.city-row {
+    margin-left: 30px;
+}
+
+.curr-weather {
+    width: 100%;
+    margin-right: 50px;
+}
+
+.five-day {
+    margin-left: -30px;
+}
+
+.wrapper-forecast {
+    padding-left: 25px;
+}
+
+.jumbo-div {
+    padding-left: 0;
+    padding-right: 0;
 }
