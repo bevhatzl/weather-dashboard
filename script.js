@@ -119,6 +119,21 @@ $(document).ready(function() {
         $(".list-group").prepend(newLiEl);
     }
 
+    // Change the background of the UV Index element according to the value
+    function getUVColor(UVValue) {
+        if (UVValue <= 2) {
+            $("#currentUV").css('background-color', '#33cc33');
+        } else if (UVValue <= 5) {
+            $("#currentUV").css('background-color', '#ffff00');
+        } else if (UVValue <= 7) {
+            $("#currentUV").css('background-color', '#ff9900');
+        } else if (UVValue <= 10) {
+            $("#currentUV").css('background-color', '#ff0000');
+        } else if (UVValue > 10) {
+            $("#currentUV").css('background-color', '#b300b3');
+        }
+    }
+
     function getAJAXData(city) {    
         // Build the query URL for the ajax request to the OpenWeather API for current weather
         let queryURL = buildQueryURL(city);
@@ -137,20 +152,17 @@ $(document).ready(function() {
             longitude = response.coord.lon;
             latitude = response.coord.lat;
             currentUVQuery = buildUVQueryURL(longitude, latitude);
-
             // to get the UV Index
             $.ajax({
                 url: currentUVQuery,
                 method: "GET"
             }).then(response => {
-                $("#currentUV").text("UV Index: " + response.value);        
+                $("#currentUV").text("UV Index: " + response.value);       
+                let UVNum = Number(response.value);
+                getUVColor(UVNum);              
             });
-
-        });
-        
-        
-
-                
+        });    
+        // To get the 5 day forecast data            
         $.ajax({
             url: forecastQuery,
             method: "GET"
