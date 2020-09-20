@@ -122,6 +122,11 @@ $(document).ready(function() {
     function getAJAXData(city) {    
         // Build the query URL for the ajax request to the OpenWeather API for current weather
         let queryURL = buildQueryURL(city);
+        // to get 5-day forecast
+        let forecastQuery = buildForecastURL(city);
+        let longitude;
+        let latitude;
+        let currentUVQuery;
 
         $.ajax({
             url: queryURL,
@@ -129,24 +134,23 @@ $(document).ready(function() {
         }).then(function(response) {
             updatePage(response);
             // Latitude and Longitude needed to build the ajax request to get UV Index
-            let longitude = response.coord.lon;
-            let latitude = response.coord.lat;
-            let currentUVQuery = buildUVQueryURL(longitude, latitude);
-
-            // to get the UV Index
-            $.ajax({
-                url: currentUVQuery,
-                method: "GET"
-            }).then(response => {
-                $("#currentUV").text("UV Index: " + response.value);        
-                // to get 5-day forecast
-                let forecastQuery = buildForecastURL(city);
-                $.ajax({
-                    url: forecastQuery,
-                    method: "GET"
-                }).then(buildForecast);
-            });
+            longitude = response.coord.lon;
+            latitude = response.coord.lat;
+            currentUVQuery = buildUVQueryURL(longitude, latitude);
         });
+        
+        // to get the UV Index
+        $.ajax({
+            url: currentUVQuery,
+            method: "GET"
+        }).then(response => {
+            $("#currentUV").text("UV Index: " + response.value);        
+        });
+                
+        $.ajax({
+            url: forecastQuery,
+            method: "GET"
+        }).then(buildForecast);            
     }
 
     // When search button is clicked...
