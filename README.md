@@ -60,6 +60,15 @@ This is a weather dashboard using the OpenWeather api and made in HTML, CSS and 
 </table>
 <br>
 
+## Coming soon in future versions..
+<ul>
+    <li>A message displayed when an invalid city name is entered</li>
+    <li>The ability to search by city and country</li>
+    <li>The ability to remove a saved city from the list</li>
+    <li>Invalid city names not to be added to the list of saved cities</li>
+    <li>Weather images to blend in with the background</li>
+</ul>
+
 ## Built With
 
 * [VScode] (https://code.visualstudio.com/) 
@@ -69,7 +78,7 @@ This is a weather dashboard using the OpenWeather api and made in HTML, CSS and 
 
 #### Initial interface
 
-![Screenshot of initial page of weather dashboard](/images/screen1.png)
+![Screenshot of initial page of weather dashboard](/images/screenfirst.png)
 
 #### Final Interface
 
