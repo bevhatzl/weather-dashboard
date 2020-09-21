@@ -67,8 +67,11 @@ $(document).ready(function() {
 
     // Displaying the current weather 
     function updatePage(weatherData) {
+        // Display the hidden elements
+        $(".wrapper-forecast").css("visibility", "visible");
+        $(".five-day").css("visibility", "visible");
+        $(".col-md-9").css("visibility", "visible");
         // Convert from Kelvin to Celsius
-        // let temp = (parseInt(weatherData.main.temp) - 273.15).toFixed(0);
         let temp = (parseInt(Math.round(weatherData.main.temp - 273.15)));
         // Call to function to decide which weather image to display
         getImageIconData(weatherData.weather[0].main, "#weather-pic");

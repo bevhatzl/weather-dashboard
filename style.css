@@ -103,13 +103,19 @@ ul {
 
 .five-day {
     margin-left: -30px;
+    visibility: hidden;
 }
 
 .wrapper-forecast {
     padding-left: 25px;
+    visibility: hidden;
 }
 
 .jumbo-div {
     padding-left: 0;
     padding-right: 0;
+}
+
+.col-md-9 {
+    visibility: hidden;
 }

@@ -69,7 +69,7 @@ This is a weather dashboard using the OpenWeather api and made in HTML, CSS and 
 
 #### Initial interface
 
-![Screenshot of initial page of weather dashboard](/images/screen1.png)
+![Screenshot of initial page of weather dashboard](/images/screenfirst.png)
 
 #### Final Interface
 
