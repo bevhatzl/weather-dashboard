@@ -21,14 +21,12 @@ $(document).ready(function () {
 
     // Loop through the list of stored cities and create li elements for each
     function buildCityList() {
-        console.log(savedCities);
         for (i = 0; i <= savedCities.length - 1; i++) {
             let newLiEl = document.createElement("li");
             newLiEl.textContent = savedCities[i];
             $(newLiEl).attr("class", "city-list");
             $(".list-group").prepend(newLiEl);
         }
-        console.log(savedCities);
     }
 
     // To get the query URL for the city's current weather stats
@@ -52,14 +50,61 @@ $(document).ready(function () {
     // To decide which weather image to display according to the data from api
     function getImageIconData(data, element) {
         switch (data) {
-            case "Clouds":
-                $(element).attr("src", "./images/clouds.png");
+            // Day time pics
+            case "01d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/01d@2x.png");
                 break;
-            case "Rain":
-                $(element).attr("src", "./images/rain.png");
+            case "02d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/02d@2x.png");
                 break;
-            case "Clear":
-                $(element).attr("src", "./images/sunny.png");
+            case "03d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/03d@2x.png");
+                break;
+            case "04d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/04d@2x.png");
+                break;
+            case "09d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/09d@2x.png");
+                break;
+            case "10d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/10d@2x.png");
+                break;
+            case "11d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/11d@2x.png");
+                break;
+            case "13d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/13d@2x.png");
+                break;
+            case "50d":
+                $(element).attr("src", "http://openweathermap.org/img/wn/50d@2x.png");
+                break;
+            // Night time pics
+            case "01n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/01n@2x.png");
+                break;
+            case "02n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/02n@2x.png");
+                break;
+            case "03n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/03n@2x.png");
+                break;
+            case "04n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/04n@2x.png");
+                break;
+            case "09n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/09n@2x.png");
+                break;
+            case "10n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/10n@2x.png");
+                break;
+            case "11n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/11n@2x.png");
+                break;
+            case "13n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/13n@2x.png");
+                break;
+            case "50n":
+                $(element).attr("src", "http://openweathermap.org/img/wn/50n@2x.png");
                 break;
             default:
                 $(element).attr("src", "");
@@ -76,7 +121,8 @@ $(document).ready(function () {
         // Convert from Kelvin to Celsius
         let temp = (parseInt(Math.round(weatherData.main.temp - 273.15)));
         // Call to function to decide which weather image to display
-        getImageIconData(weatherData.weather[0].main, "#weather-pic");
+        getImageIconData(weatherData.weather[0].icon, "#weather-pic");
+        console.log(weatherData.weather[0].icon);
         // Updating the weather stats in the HTML
         $("#city-name").text(weatherData.name + " (" + (today.format('DD-MM-YYYY')) + ")");
         $("#current-temp").text("Temperature: " + temp + "°C");
@@ -91,7 +137,7 @@ $(document).ready(function () {
             // Setting up the array of objects
             forecastArray.push({
                 dayNumber: i,
-                weather: forecastData.list[i].weather[0].main,
+                weather: forecastData.list[i].weather[0].icon,
                 temp: "Temp: " + (parseInt(Math.round(forecastData.list[i].main.temp - 273.15))) + "°C",
                 humid: "Humidity: " + forecastData.list[i].main.humidity + "%"
             })
