@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     let apiKey = "0779e5f00c3333790a98dafe71d6c344";
     let currentCity;
@@ -8,7 +8,7 @@ $(document).ready(function() {
     let savedCities = [];
     const savedCityLocalStorage = "cities";
     let storedCurrCity = JSON.parse(localStorage.getItem("city"));
-    const currCityLocalStorage = "city"
+    const currCityLocalStorage = "city";
 
     // To get stored city and city list when page refreshes
     if (storedCities) {
@@ -21,12 +21,14 @@ $(document).ready(function() {
 
     // Loop through the list of stored cities and create li elements for each
     function buildCityList() {
-        for (i = 0; i < savedCities.length; i++) {
+        console.log(savedCities);
+        for (i = 0; i <= savedCities.length - 1; i++) {
             let newLiEl = document.createElement("li");
             newLiEl.textContent = savedCities[i];
             $(newLiEl).attr("class", "city-list");
             $(".list-group").prepend(newLiEl);
         }
+        console.log(savedCities);
     }
 
     // To get the query URL for the city's current weather stats
@@ -53,7 +55,7 @@ $(document).ready(function() {
             case "Clouds":
                 $(element).attr("src", "./images/clouds.png");
                 break;
-            case "Rain":            
+            case "Rain":
                 $(element).attr("src", "./images/rain.png");
                 break;
             case "Clear":
@@ -90,10 +92,10 @@ $(document).ready(function() {
             forecastArray.push({
                 dayNumber: i,
                 weather: forecastData.list[i].weather[0].main,
-                temp: "Temp: " + (parseInt(Math.round(forecastData.list[i].main.temp -273.15))) + "°C",
+                temp: "Temp: " + (parseInt(Math.round(forecastData.list[i].main.temp - 273.15))) + "°C",
                 humid: "Humidity: " + forecastData.list[i].main.humidity + "%"
             })
-        } 
+        }
         // Get the list of elements to display date
         let dateEls = document.getElementsByClassName("date");
         // get the list of html elements to display temperature
@@ -104,7 +106,7 @@ $(document).ready(function() {
         // Loop through the 5 day forcast
         for (let j = 0; j < 5; j++) {
             // Get the date of the forecast day
-            forecastDate = today.clone().add((j+1), 'days').format('DD-MM-YYYY');
+            forecastDate = today.clone().add((j + 1), 'days').format('DD-MM-YYYY');
             // Update the text content of the html elements which are in a list
             dateEls[j].textContent = forecastDate;
             tempEls[j].textContent = forecastArray[j].temp;
@@ -137,7 +139,7 @@ $(document).ready(function() {
         }
     }
 
-    function getAJAXData(city) {    
+    function getAJAXData(city) {
         // Build the query URL for the ajax request to the OpenWeather API for current weather
         let queryURL = buildQueryURL(city);
         // to get 5-day forecast
@@ -148,27 +150,45 @@ $(document).ready(function() {
 
         $.ajax({
             url: queryURL,
-            method: "GET"
-        }).then(function(response) {
-            updatePage(response);
-            // Latitude and Longitude needed to build the ajax request to get UV Index
-            longitude = response.coord.lon;
-            latitude = response.coord.lat;
-            currentUVQuery = buildUVQueryURL(longitude, latitude);
-            // to get the UV Index
-            $.ajax({
-                url: currentUVQuery,
-                method: "GET"
-             }).then(response => {
-                $("#currentUV").text("UV Index: " + response.value);       
-                let UVNum = Number(response.value);
-                getUVColor(UVNum);              
-            });
-            // To get the 5 day forecast data   
-            $.ajax({
-                url: forecastQuery,
-                method: "GET"
-            }).then(buildForecast);                
+            method: "GET",
+            async: false,
+            global: false,
+            success: function (response) {
+                updatePage(response);
+                // Latitude and Longitude needed to build the ajax request to get UV Index
+                longitude = response.coord.lon;
+                latitude = response.coord.lat;
+                currentUVQuery = buildUVQueryURL(longitude, latitude);
+                // Call to function to check if city is already in list of saved cities
+                let IsCityInList = isCityInList(city);
+                // Add the city to the list of saved cities if not already
+                if (!IsCityInList) {
+                    savedCities.push(city);
+                    createCityEl(city);
+                }
+                // Save the current city in local storage, this will be displayed upon page refresh
+                localStorage.setItem(currCityLocalStorage, JSON.stringify((city)));
+                // Save the city in local storage for the saved cities list
+                localStorage.setItem(savedCityLocalStorage, JSON.stringify((savedCities)));
+                // to get the UV Index
+                $.ajax({
+                    url: currentUVQuery,
+                    method: "GET"
+                }).then(response => {
+                    $("#currentUV").text("UV Index: " + response.value);
+                    let UVNum = Number(response.value);
+                    getUVColor(UVNum);
+                });
+                // To get the 5 day forecast data   
+                $.ajax({
+                    url: forecastQuery,
+                    method: "GET"
+                }).then(buildForecast);
+
+            },
+            error: function () {
+                alert("Sorry, that city was not found.");
+            }
         });
     }
 
@@ -177,33 +197,20 @@ $(document).ready(function() {
     }
 
     // When search button is clicked...
-    $("#run-search").on("click", function(event) {
+    $("#run-search").on("click", function (event) {
         event.preventDefault();
-        currentCity = $("#city-input").val();
-        // Call to function to check if city is already in list of saved cities
-        let IsCityInList = isCityInList(currentCity);
-        // Add the city to the list of saved cities if not already
-        if (!IsCityInList) {
-            savedCities.push(currentCity);        
-            createCityEl(currentCity);
-        }
+        let inputCity = $("#city-input").val();
         // Start the request to the api
-        getAJAXData(currentCity);
-        // Save the city in local storage for the saved cities list
-        localStorage.setItem(savedCityLocalStorage, JSON.stringify((savedCities)));
-        // Save the current city in local storage, this will be displayed upon page refresh
-        localStorage.setItem(currCityLocalStorage, JSON.stringify((currentCity)));
+        getAJAXData(inputCity);
     })
 
     // When a city in the list is clicked...
-    $(".list-group").on("click", function(event) {
+    $(".list-group").on("click", function (event) {
         event.preventDefault();
         // Update the current city variable
         currentCity = $(event.target)[0].textContent;
         // Start the request to the api
         getAJAXData(currentCity);
-        // Save the current city in local storage, this will be displayed upon page refresh
-        localStorage.setItem(currCityLocalStorage, JSON.stringify((currentCity)));
     })
 
 })
