@@ -137,8 +137,6 @@ $(document).ready(function () {
         $.ajax({
             url: queryURL,
             method: "GET",
-            async: false,
-            global: false,
             success: function (response) {
                 updatePage(response);
                 // Latitude and Longitude needed to build the ajax request to get UV Index
