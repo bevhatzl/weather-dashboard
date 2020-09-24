@@ -62,7 +62,6 @@ $(document).ready(function () {
         let temp = (parseInt(Math.round(weatherData.main.temp - 273.15)));
         // Call to function to decide which weather image to display
         getImageIconData(weatherData.weather[0].icon, "#weather-pic");
-        console.log(weatherData.weather[0].icon);
         // Updating the weather stats in the HTML
         $("#city-name").text(weatherData.name + " (" + (today.format('DD-MM-YYYY')) + ")");
         $("#current-temp").text("Temperature: " + temp + "°C");
