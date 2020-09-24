@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container-fluid">
         <div class=row>
             <div class="col-12 jumbo-div">
                 <div class="jumbotron">
-                    <h1 class="display-4">Weather Dashboard</h1>         
+                    <h1 class="display-4">Weather Dashboard</h1>
                 </div>
             </div>
         </div>
@@ -22,84 +25,86 @@
             <div class="col-md-3">
                 <label for="city-input">Search for a City:</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="city-input" >
+                    <input type="text" class="form-control" id="city-input">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-default" id="run-search">
-                            <i class="city-search"><img id="search-icon" src="./images/search.png" alt="icon of magnifying glass"></i></button>
+                            <i class="city-search"><img id="search-icon" src="./images/search.png"
+                                    alt="icon of magnifying glass"></i></button>
                     </div>
                 </div>
                 <ul class="list-group">
                     <!-- The city list to be added here dynamically using JS -->
                 </ul>
             </div>
-        
+
             <div class="col-md-9">
                 <div class="row">
                     <div class="card curr-weather">
                         <div class="card-body">
-                            <h4 class="card-title" id="city-name" ></h4>
+                            <h4 class="card-title" id="city-name"></h4>
                             <img src="" id="weather-pic" alt="">
-                            <p class="card-text" id="current-temp" ></p>
-                            <p class="card-text" id="current-humid" ></p>
+                            <p class="card-text" id="current-temp"></p>
+                            <p class="card-text" id="current-humid"></p>
                             <p class="card-text" id="current-wind"></p>
                             <p class="card-text" id="currentUV"></p>
                         </div>
                     </div>
                 </div>
-                 
+
                 <div class="row five-day">
                     <h2>5-Day Forecast:</h2>
                 </div>
 
-              <div class="wrapper-forecast">   
-                <div class="row forecast-row">                  
-                    <div class="card forecast-card">
-                        <div class="card-body">
-                            <h5 class="card-title date"></h5>
-                            <img src="" class="icon-pic0" alt="">
-                            <p class="card-text temp" ></p>
-                            <p class="card-text humid"></p>
+                <div class="wrapper-forecast">
+                    <div class="row forecast-row">
+                        <div class="card forecast-card">
+                            <div class="card-body">
+                                <h5 class="card-title date"></h5>
+                                <img src="" class="icon-pic0" alt="">
+                                <p class="card-text temp"></p>
+                                <p class="card-text humid"></p>
+                            </div>
                         </div>
-                    </div>                                       
-                    <div class="card forecast-card">
-                        <div class="card-body" >
-                            <h5 class="card-title date"></h5>
-                            <img src="" class="icon-pic1" alt="">
-                            <p class="card-text temp" ></p>
-                            <p class="card-text humid"></p>
+                        <div class="card forecast-card">
+                            <div class="card-body">
+                                <h5 class="card-title date"></h5>
+                                <img src="" class="icon-pic1" alt="">
+                                <p class="card-text temp"></p>
+                                <p class="card-text humid"></p>
+                            </div>
                         </div>
-                    </div>                    
-                    <div class="card forecast-card">
-                        <div class="card-body" >
-                            <h5 class="card-title date"></h5>
-                            <img src="" class="icon-pic2" alt="">
-                            <p class="card-text temp"></p>
-                            <p class="card-text humid"></p>
+                        <div class="card forecast-card">
+                            <div class="card-body">
+                                <h5 class="card-title date"></h5>
+                                <img src="" class="icon-pic2" alt="">
+                                <p class="card-text temp"></p>
+                                <p class="card-text humid"></p>
+                            </div>
+                        </div>
+                        <div class="card forecast-card">
+                            <div class="card-body">
+                                <h5 class="card-title date"></h5>
+                                <img src="" class="icon-pic3" alt="">
+                                <p class="card-text temp"></p>
+                                <p class="card-text humid"></p>
+                            </div>
+                        </div>
+                        <div class="card forecast-card">
+                            <div class="card-body">
+                                <h5 class="card-title date"></h5>
+                                <img src="" class="icon-pic4" alt="">
+                                <p class="card-text temp"></p>
+                                <p class="card-text humid"></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card forecast-card">
-                        <div class="card-body" >
-                            <h5 class="card-title date"></h5>
-                            <img src="" class="icon-pic3" alt="">
-                            <p class="card-text temp"></p>
-                            <p class="card-text humid"></p>
-                        </div>
-                    </div>
-                    <div class="card forecast-card">
-                        <div class="card-body" >
-                            <h5 class="card-title date"></h5>
-                            <img src="" class="icon-pic4" alt="">
-                            <p class="card-text temp"></p>
-                            <p class="card-text humid"></p>
-                        </div>
-                    </div>                
                 </div>
-              </div>
             </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>

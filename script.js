@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     // To decide which weather image to display according to the data from api
     function getImageIconData(data, element) {
-        $(element).attr("src", "http://openweathermap.org/img/wn/" + data + "@2x.png");
+        $(element).attr("src", "https://openweathermap.org/img/wn/" + data + "@2x.png");
     }
 
     // Displaying the current weather 
