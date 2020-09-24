@@ -46,6 +46,7 @@ This is a weather dashboard using the OpenWeather api and made in HTML, CSS and 
 <ul>
     <li>The ability to search by city and country</li>
     <li>The ability to remove a saved city from the list</li>
+    <li>Add a spinner while loading the 5 day forecast</li>
 </ul>
 
 ## Built With

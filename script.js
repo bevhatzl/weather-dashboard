@@ -49,67 +49,7 @@ $(document).ready(function () {
 
     // To decide which weather image to display according to the data from api
     function getImageIconData(data, element) {
-        switch (data) {
-            // Day time pics
-            case "01d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/01d@2x.png");
-                break;
-            case "02d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/02d@2x.png");
-                break;
-            case "03d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/03d@2x.png");
-                break;
-            case "04d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/04d@2x.png");
-                break;
-            case "09d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/09d@2x.png");
-                break;
-            case "10d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/10d@2x.png");
-                break;
-            case "11d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/11d@2x.png");
-                break;
-            case "13d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/13d@2x.png");
-                break;
-            case "50d":
-                $(element).attr("src", "http://openweathermap.org/img/wn/50d@2x.png");
-                break;
-            // Night time pics
-            case "01n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/01n@2x.png");
-                break;
-            case "02n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/02n@2x.png");
-                break;
-            case "03n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/03n@2x.png");
-                break;
-            case "04n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/04n@2x.png");
-                break;
-            case "09n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/09n@2x.png");
-                break;
-            case "10n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/10n@2x.png");
-                break;
-            case "11n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/11n@2x.png");
-                break;
-            case "13n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/13n@2x.png");
-                break;
-            case "50n":
-                $(element).attr("src", "http://openweathermap.org/img/wn/50n@2x.png");
-                break;
-            default:
-                $(element).attr("src", "");
-                break;
-        }
+        $(element).attr("src", "http://openweathermap.org/img/wn/" + data + "@2x.png");
     }
 
     // Displaying the current weather 
